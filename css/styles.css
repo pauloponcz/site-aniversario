@@ -639,3 +639,221 @@ footer {
 .card--center .btn {
   margin-top: 24px;
 }
+
+.gift-intro {
+  width: min(620px, 100%);
+  margin: -10px auto 34px;
+  color: rgba(255,255,255,0.95);
+  font-size: 1.04rem;
+  line-height: 1.8;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(22, 71, 106, 0.28);
+}
+
+.gift-carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.gift-carousel__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.gift-carousel__track {
+  display: flex;
+  gap: 18px;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.gift-card {
+  min-width: calc((100% - 36px) / 3);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.58);
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.11));
+  box-shadow: 0 20px 58px rgba(29, 78, 112, 0.24);
+  backdrop-filter: blur(10px);
+}
+
+.gift-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  background: rgba(255,255,255,0.18);
+}
+
+.gift-card__content {
+  padding: 24px;
+  text-align: center;
+}
+
+.gift-card h4 {
+  margin-bottom: 10px;
+  color: var(--branco);
+  font-size: 1.25rem;
+  text-shadow: 0 2px 8px rgba(22, 71, 106, 0.38);
+}
+
+.gift-card p {
+  min-height: 54px;
+  margin-bottom: 16px;
+  color: rgba(255,255,255,0.94);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.gift-card__price {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--branco);
+  font-size: 1.5rem;
+  text-shadow: 0 4px 14px rgba(22, 71, 106, 0.42);
+}
+
+.gift-card__button {
+  width: 100%;
+}
+
+.gift-carousel__button {
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.65);
+  border-radius: 50%;
+  color: var(--texto-azul);
+  background: linear-gradient(135deg, #ffffff, #dff4ff, #b9d8ed);
+  box-shadow: 0 14px 34px rgba(27, 81, 119, 0.32);
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.gift-carousel__button:hover {
+  transform: scale(1.08);
+}
+
+.gift-carousel__button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .gift-card {
+    min-width: calc((100% - 18px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .gift-carousel {
+    gap: 8px;
+  }
+
+  .gift-card {
+    min-width: 100%;
+  }
+
+  .gift-card__image {
+    height: 240px;
+  }
+
+  .gift-carousel__button {
+    width: 42px;
+    min-width: 42px;
+    height: 42px;
+    font-size: 1.7rem;
+  }
+}
+
+.gift-list-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.gift-list-wrapper {
+  display: none;
+  margin-top: 28px;
+}
+
+.gift-list-wrapper.show {
+  display: block;
+}
+
+.gift-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.gift-list-item {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(255,255,255,0.58);
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.24), rgba(255,255,255,0.11));
+  box-shadow: 0 16px 44px rgba(29, 78, 112, 0.20);
+  backdrop-filter: blur(10px);
+}
+
+.gift-list-item__image {
+  width: 90px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.18);
+}
+
+.gift-list-item__content h4 {
+  margin-bottom: 6px;
+  color: var(--branco);
+  font-size: 1.15rem;
+  text-shadow: 0 2px 8px rgba(22, 71, 106, 0.38);
+}
+
+.gift-list-item__content p {
+  margin-bottom: 8px;
+  color: rgba(255,255,255,0.94);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.gift-list-item__price {
+  display: block;
+  color: var(--branco);
+  font-size: 1.25rem;
+  text-shadow: 0 4px 14px rgba(22, 71, 106, 0.42);
+}
+
+.gift-list-item__button {
+  min-width: 130px;
+}
+
+@media (max-width: 700px) {
+  .gift-list-item {
+    grid-template-columns: 90px 1fr;
+  }
+
+  .gift-list-item__image {
+    width: 90px;
+    height: 90px;
+  }
+
+  .gift-list-item__button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}

@@ -62,6 +62,7 @@
         <div class="actions">
           <a class="btn" href="#confirmar">Confirmar presença</a>
           <a class="btn btn-outline" href="#local">Ver local</a>
+          <a class="btn btn-outline" href="#presentes">Ver presentes</a>
         </div>
       </div>
     </section>
@@ -148,6 +149,43 @@
       </div>
     </section>
 
+    <section class="section" id="presentes">
+      <div class="container">
+        <header class="section-title">
+          <p class="script-title">Presentes</p>
+          <h3>Escolha uma opção</h3>
+        </header>
+
+        <p class="gift-intro">
+          Escolha uma das opções abaixo para presentear de forma simples e carinhosa.
+        </p>
+
+        <div class="gift-carousel">
+          <button class="gift-carousel__button gift-carousel__button--prev" type="button" id="giftPrev">
+            ‹
+          </button>
+
+          <div class="gift-carousel__viewport">
+            <div class="gift-carousel__track" id="giftGrid"></div>
+          </div>
+
+          <button class="gift-carousel__button gift-carousel__button--next" type="button" id="giftNext">
+            ›
+          </button>
+        </div>
+
+        <div class="gift-list-actions">
+          <button class="btn btn-outline" type="button" id="toggleGiftList">
+            Ver todos os presentes
+          </button>
+        </div>
+
+        <div class="gift-list-wrapper" id="giftListWrapper">
+          <div class="gift-list" id="giftList"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="confirmar">
       <div class="container">
         <div class="rsvp">
@@ -174,4 +212,5 @@
   
 </body>
 <script src="./js/script.js"></script>
+<script src="./js/presentes.js"></script>
 </html>

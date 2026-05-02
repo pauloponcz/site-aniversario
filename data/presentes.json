@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nome": "Contribuição Especial",
+    "descricao": "Ajude a realizar esse momento especial.",
+    "valor": 50,
+    "imagem": "./assets/presentes/default-presente.webp"
+  },
+  {
+    "id": 2,
+    "nome": "Presente Carinhoso",
+    "descricao": "Uma lembrança cheia de carinho.",
+    "valor": 100,
+    "imagem": "./assets/presentes/default-presente.webp"
+  },
+  {
+    "id": 3,
+    "nome": "Presente Premium",
+    "descricao": "Um presente ainda mais especial.",
+    "valor": 150,
+    "imagem": "./assets/presentes/default-presente.webp"
+  }
+]
