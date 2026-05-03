@@ -15,7 +15,19 @@
   
   <div class="shine"></div>
 
-  
+  <div class="sparkle-layer"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="./assets/musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-toggle" id="musicToggle" type="button">
+    🎵
+  </button>
+
+  <a class="floating-confirm" href="#confirmar">
+    Confirmar presença
+  </a>
 
   <div class="intro" id="intro">
     <div class="intro-card">
@@ -69,9 +81,145 @@ Com muita emoção e felicidade, convidamos você para celebrar conosco um momen
         </div>
 
         <div class="actions">
-          <a class="btn" href="#confirmar">Confirmar presença</a>
+          <a class="btn btn-outline" href="#confirmar">Confirmar presença</a>
           <a class="btn btn-outline" href="#local">Ver local</a>
           <a class="btn btn-outline" href="#presentes">Ver presentes</a>
+          <a
+            class="btn btn-outline"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=15%20anos%20Sarah%20e%20Sofia&dates=20260815T220000Z/20260816T030000Z&details=Convite%20especial%20para%20celebrar%20os%2015%20anos%20de%20Sarah%20e%20Sofia.&location=Rua%20Domingos%20Baldan%20553%2C%20Curitiba%2C%20PR"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Adicionar ao calendário
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="special-message">
+          <div class="section-title" style="margin-bottom: 18px;">
+            <div class="script-title">Sobre</div>
+            <h3>As debutantes</h3>
+          </div>
+
+          <p>
+            Sarah e Sofia celebram uma fase cheia de sonhos, carinho e novas descobertas.
+            Esta noite foi preparada para compartilhar alegria, amor e memórias especiais
+            com pessoas queridas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section-title">
+          <div class="script-title">Galeria</div>
+          <h3>Momentos especiais</h3>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="./assets/galeria/foto-1.jpg" alt="Foto Sarah e Sofia 1">
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/galeria/foto-2.jpg" alt="Foto Sarah e Sofia 2">
+          </div>
+
+          <div class="gallery-item">
+            <img src="./assets/galeria/foto-3.jpg" alt="Foto Sarah e Sofia 3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="linha-do-tempo">
+      <div class="container">
+        <div class="section-title">
+          <div class="script-title">Programação</div>
+          <h3>Linha do tempo</h3>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <span>19h00</span>
+            <strong>Recepção dos convidados</strong>
+            <p>Chegada e boas-vindas para todos.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>20h00</span>
+            <strong>Jantar</strong>
+            <p>Momento especial para celebrar com carinho.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>21h00</span>
+            <strong>Cerimonial</strong>
+            <p>Entrada das debutantes, valsas e homenagens.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>22h00</span>
+            <strong>Parabéns</strong>
+            <p>Brinde, bolo e muita emoção.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span>22h30</span>
+            <strong>Pista de dança</strong>
+            <p>Abertura da pista e atração surpresa.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recados">
+      <div class="container">
+        <div class="notice-box">
+          <div class="section-title" style="margin-bottom: 18px;">
+            <div class="script-title">Recados</div>
+            <h3>Aos convidados</h3>
+          </div>
+
+          <p>
+            Pedimos que confirmem presença até a data combinada.
+            Chegue com alguns minutos de antecedência para aproveitar todos os momentos da festa.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="perguntas">
+      <div class="container">
+        <div class="section-title">
+          <div class="script-title">Dúvidas</div>
+          <h3>Perguntas frequentes</h3>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>Qual é o traje?</summary>
+            <p>Traje social. Azul é a cor das debutantes.</p>
+          </details>
+
+          <details>
+            <summary>Posso levar acompanhante?</summary>
+            <p>Entre em contato com a organização para confirmar a disponibilidade.</p>
+          </details>
+
+          <details>
+            <summary>Onde será a festa?</summary>
+            <p>Rua Domingos Baldan, 553, Curitiba - PR, CEP 81940-350.</p>
+          </details>
+
+          <details>
+            <summary>Até quando confirmar presença?</summary>
+            <p>Confirme o quanto antes pelo botão de confirmação no site.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -110,10 +258,11 @@ Com muita emoção e felicidade, convidamos você para celebrar conosco um momen
               ou fazer um Pix no valor que desejar.
             </p>
 
-            <a class="btn btn--spaced" href="#presentes">
+            <a class="btn btn--spaced card-button" href="#presentes">
               Ver opções de presentes
             </a>
           </article>
+
         </div>
       </div>
     </section>
@@ -240,11 +389,21 @@ Com muita emoção e felicidade, convidamos você para celebrar conosco um momen
     </section>
   </main>
 
+  <section class="section" id="mensagem-final">
+    <div class="container">
+      <div class="final-message">
+        <p class="script-title">Esperamos você</p>
+        <h3>Para viver esse momento inesquecível conosco</h3>
+        <p>Com carinho, Sarah e Sofia.</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     Feito com carinho para uma noite inesquecível ✨
   </footer>
 
   
+  <script src="./js/script.js"></script>
 </body>
-<script src="./js/script.js"></script>
 </html>

@@ -84,3 +84,22 @@ preencherDataEvento();
 atualizarContagem();
 
 setInterval(atualizarContagem, 1000);
+
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+
+let musicaTocando = false;
+
+if (musicToggle && bgMusic) {
+    musicToggle.addEventListener('click', function () {
+        if (!musicaTocando) {
+            bgMusic.play();
+            musicToggle.textContent = '⏸️';
+            musicaTocando = true;
+        } else {
+            bgMusic.pause();
+            musicToggle.textContent = '🎵';
+            musicaTocando = false;
+        }
+    });
+}
