@@ -849,3 +849,11 @@ footer {
         background-position: center top;
     }
 }
+
+.card .btn {
+    text-align: center;
+    align-self: center;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
