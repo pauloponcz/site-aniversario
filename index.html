@@ -39,7 +39,11 @@
         <h2>15 anos</h2>
 
         <p class="hero-text">
-          Com muita alegria, convido você para comemorar comigo uma data inesquecível, cheia de luz, amor, música e momentos especiais.
+          Cada momento da vida é único e passa rápido, mas deixa lembranças que permanecem para  sempre 
+em nosso coração. 
+São esses instantes especiais que se transformam em alegria e, quando compartilhados com pessoas queridas,  tornam-se ainda mais inesquecíveis.
+Com muita emoção e felicidade, convidamos você para celebrar conosco um momento muito especial a comemoração dos nossos 
+15 anos.
         </p>
 
         <div class="date-card glass-card">
@@ -153,35 +157,48 @@
       <div class="container">
         <header class="section-title">
           <p class="script-title">Presentes</p>
-          <h3>Escolha uma opção</h3>
+          <h3>Como presentear</h3>
         </header>
 
-        <p class="gift-intro">
-          Escolha uma das opções abaixo para presentear de forma simples e carinhosa.
-        </p>
+        <div class="gift-box">
+          <div class="gift-option">
+            <div class="gift-option__icon">🎁</div>
 
-        <div class="gift-carousel">
-          <button class="gift-carousel__button gift-carousel__button--prev" type="button" id="giftPrev">
-            ‹
-          </button>
+            <h4>Lista de desejos</h4>
 
-          <div class="gift-carousel__viewport">
-            <div class="gift-carousel__track" id="giftGrid"></div>
+            <p>
+              Veja algumas sugestões de presentes escolhidas com carinho.
+            </p>
+
+            <a
+              class="btn"
+              href="COLE_AQUI_O_LINK_DA_LISTA"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver lista de presentes
+            </a>
           </div>
 
-          <button class="gift-carousel__button gift-carousel__button--next" type="button" id="giftNext">
-            ›
-          </button>
-        </div>
+          <div class="gift-divider"></div>
 
-        <div class="gift-list-actions">
-          <button class="btn btn-outline" type="button" id="toggleGiftList">
-            Ver todos os presentes
-          </button>
-        </div>
+          <div class="gift-option">
+            <div class="gift-option__icon">💙</div>
 
-        <div class="gift-list-wrapper" id="giftListWrapper">
-          <div class="gift-list" id="giftList"></div>
+            <h4>Presentear com Pix</h4>
+
+            <p>
+              Caso prefira presentear com dinheiro, utilize o QR Code abaixo.
+            </p>
+
+            <div class="pix-qrcode">
+              <img src="./assets/qrcode.png" alt="QR Code Pix para presente" />
+            </div>
+
+            <p class="pix-info">
+              Escaneie o QR Code com o app do seu banco.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -212,5 +229,4 @@
   
 </body>
 <script src="./js/script.js"></script>
-<script src="./js/presentes.js"></script>
 </html>
