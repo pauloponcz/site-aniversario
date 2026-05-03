@@ -6,14 +6,49 @@ const eventoDia = document.getElementById('evento-dia');
 const eventoMes = document.getElementById('evento-mes');
 const eventoHorario = document.getElementById('evento-horario');
 
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+
+let musicaTocando = false;
+
+function tocarMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    bgMusic.volume = 0.2;
+
+    bgMusic.play()
+        .then(() => {
+            musicaTocando = true;
+
+            if (musicToggle) {
+                musicToggle.textContent = '⏸️';
+            }
+        })
+        .catch(() => {
+            musicaTocando = false;
+
+            if (musicToggle) {
+                musicToggle.textContent = '🎵';
+            }
+        });
+}
+
 function abrirConvite() {
     if (intro) {
         intro.classList.add('hide');
     }
+
+    tocarMusica();
 }
 
-if (window.location.hash === '#confirmar' && intro) {
-    intro.classList.add('hide');
+if (window.location.hash === '#confirmar') {
+    if (intro) {
+        intro.classList.add('hide');
+    }
+
+    tocarMusica();
 }
 
 function preencherDataEvento() {
@@ -80,26 +115,19 @@ function atualizarContagem() {
     }
 }
 
+if (musicToggle && bgMusic) {
+    musicToggle.addEventListener('click', function () {
+        if (!musicaTocando) {
+            tocarMusica();
+        } else {
+            bgMusic.pause();
+            musicaTocando = false;
+            musicToggle.textContent = '🎵';
+        }
+    });
+}
+
 preencherDataEvento();
 atualizarContagem();
 
 setInterval(atualizarContagem, 1000);
-
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
-
-let musicaTocando = false;
-
-if (musicToggle && bgMusic) {
-    musicToggle.addEventListener('click', function () {
-        if (!musicaTocando) {
-            bgMusic.play();
-            musicToggle.textContent = '⏸️';
-            musicaTocando = true;
-        } else {
-            bgMusic.pause();
-            musicToggle.textContent = '🎵';
-            musicaTocando = false;
-        }
-    });
-}
