@@ -7,10 +7,12 @@ const eventoMes = document.getElementById('evento-mes');
 const eventoHorario = document.getElementById('evento-horario');
 
 function abrirConvite() {
-    intro.classList.add('hide');
+    if (intro) {
+        intro.classList.add('hide');
+    }
 }
 
-if (window.location.hash === '#confirmar') {
+if (window.location.hash === '#confirmar' && intro) {
     intro.classList.add('hide');
 }
 
@@ -26,17 +28,28 @@ function preencherDataEvento() {
         minute: '2-digit'
     });
 
-    eventoDia.textContent = dia;
-    eventoMes.textContent = mes.charAt(0).toUpperCase() + mes.slice(1);
-    eventoHorario.textContent = horario;
+    if (eventoDia) {
+        eventoDia.textContent = dia;
+    }
+
+    if (eventoMes) {
+        eventoMes.textContent = mes.charAt(0).toUpperCase() + mes.slice(1);
+    }
+
+    if (eventoHorario) {
+        eventoHorario.textContent = horario;
+    }
 }
 
 function atualizarContagem() {
     const agora = new Date();
     const diferenca = dataEvento - agora;
+    const countdown = document.getElementById('countdown');
 
     if (diferenca <= 0) {
-        document.getElementById('countdown').innerHTML = '<div class="count-item" style="grid-column: 1 / -1;"><strong>É hoje!</strong><span>Vamos comemorar</span></div>';
+        if (countdown) {
+            countdown.innerHTML = '<div class="count-item" style="grid-column: 1 / -1;"><strong>É hoje!</strong><span>Vamos comemorar</span></div>';
+        }
         return;
     }
 
@@ -45,10 +58,26 @@ function atualizarContagem() {
     const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
     const segundos = Math.floor((diferenca / 1000) % 60);
 
-    document.getElementById('dias').textContent = String(dias).padStart(2, '0');
-    document.getElementById('horas').textContent = String(horas).padStart(2, '0');
-    document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
-    document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+    const diasEl = document.getElementById('dias');
+    const horasEl = document.getElementById('horas');
+    const minutosEl = document.getElementById('minutos');
+    const segundosEl = document.getElementById('segundos');
+
+    if (diasEl) {
+        diasEl.textContent = String(dias).padStart(2, '0');
+    }
+
+    if (horasEl) {
+        horasEl.textContent = String(horas).padStart(2, '0');
+    }
+
+    if (minutosEl) {
+        minutosEl.textContent = String(minutos).padStart(2, '0');
+    }
+
+    if (segundosEl) {
+        segundosEl.textContent = String(segundos).padStart(2, '0');
+    }
 }
 
 preencherDataEvento();

@@ -334,17 +334,17 @@ section {
 }
 
 .xv-title__number {
-    color: rgba(255, 255, 255, 0.42);
-    font-family: 'Great Vibes', cursive;
+    color: rgba(255, 255, 255, 0.48);
+    font-family: 'Cinzel', 'Times New Roman', serif;
     font-size: clamp(7rem, 24vw, 12rem);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 0.8;
-    letter-spacing: -6px;
+    letter-spacing: -2px;
     text-transform: uppercase;
     text-shadow:
         0 6px 20px rgba(22, 71, 106, 0.35),
         0 0 18px rgba(255, 255, 255, 0.35);
-}
+}   
 
 .xv-title__text {
     position: absolute;
