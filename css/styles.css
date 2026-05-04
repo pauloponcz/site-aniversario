@@ -1183,6 +1183,18 @@ footer {
     }
 }
 
+.instagram-button {
+    gap: 10px;
+    text-align: center;
+}
+
+.instagram-icon-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+
 /* RESPONSIVO DAS NOVAS SEÇÕES */
 @media (max-width: 820px) {
     .gallery-grid {
