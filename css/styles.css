@@ -1229,3 +1229,10 @@ footer {
         height: 46px;
     }
 }
+
+@media (max-width: 480px) {
+    .section {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
