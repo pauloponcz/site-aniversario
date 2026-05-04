@@ -16,7 +16,7 @@ function tocarMusica() {
         return;
     }
 
-    bgMusic.volume = 0;
+    bgMusic.volume = 0.11;
 
     bgMusic.play()
         .then(() => {
