@@ -1,0 +1,48 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de música">
+  <title>Ícone de música</title>
+  <desc>Ícone vetorial de nota musical, em azul escuro, sem fundo.</desc>
+
+  <defs>
+    <style>
+      .note { fill: #0f2d3a; }
+    </style>
+  </defs>
+
+  <!-- Haste e barra superior -->
+  <path class="note" d="
+    M288 118
+    C288 107 296 97 306 94
+    L389 70
+    C404 66 418 77 418 92
+    L418 276
+    C418 286 410 294 400 294
+    C390 294 382 286 382 276
+    L382 123
+    L324 140
+    L324 296
+    C324 306 316 314 306 314
+    C296 314 288 306 288 296
+    Z"/>
+
+  <!-- Nota esquerda -->
+  <ellipse class="note" cx="214" cy="330" rx="52" ry="43" transform="rotate(-23 214 330)"/>
+
+  <!-- Nota direita -->
+  <ellipse class="note" cx="352" cy="295" rx="52" ry="43" transform="rotate(-23 352 295)"/>
+
+  <!-- Haste esquerda -->
+  <path class="note" d="
+    M288 136
+    L324 126
+    L324 296
+    L288 296
+    Z"/>
+
+  <!-- Ligação da haste esquerda com a nota esquerda -->
+  <path class="note" d="
+    M288 286
+    C274 292 261 299 248 307
+    L232 278
+    C250 268 270 259 288 253
+    Z"/>
+</svg>

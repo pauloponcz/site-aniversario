@@ -1,0 +1,63 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de presente">
+  <title>Ícone de presente</title>
+  <desc>Ícone vetorial de presente com laço, em azul acinzentado, sem fundo.</desc>
+
+  <defs>
+    <style>
+      .gift { fill: #2f4350; }
+    </style>
+  </defs>
+
+  <!-- Laço esquerdo -->
+  <path class="gift" d="M247.5 152.5
+    C218 103 179 81 153 94
+    C128 107 132 145 158 167
+    C182 188 217 188 247.5 174
+    Z"/>
+
+  <!-- Laço direito -->
+  <path class="gift" d="M264.5 152.5
+    C294 103 333 81 359 94
+    C384 107 380 145 354 167
+    C330 188 295 188 264.5 174
+    Z"/>
+
+  <!-- Nó central -->
+  <path class="gift" d="M238 158
+    C246 150 266 150 274 158
+    C266 168 246 168 238 158
+    Z"/>
+
+  <!-- Tampa esquerda -->
+  <path class="gift" d="M92 194
+    C92 182 102 172 114 172
+    H238
+    V242
+    H92
+    Z"/>
+
+  <!-- Tampa direita -->
+  <path class="gift" d="M274 172
+    H398
+    C410 172 420 182 420 194
+    V242
+    H274
+    Z"/>
+
+  <!-- Corpo inferior esquerdo -->
+  <path class="gift" d="M114 270
+    H238
+    V424
+    H128
+    C116 424 106 414 106 402
+    V270
+    Z"/>
+
+  <!-- Corpo inferior direito -->
+  <path class="gift" d="M274 270
+    H406
+    V402
+    C406 414 396 424 384 424
+    H274
+    Z"/>
+</svg>

@@ -1,0 +1,92 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de traje social">
+  <title>Ícone de traje social</title>
+  <desc>Ícone vetorial de traje social com vestido e terno, em azul acinzentado, sem fundo.</desc>
+
+  <defs>
+    <style>
+      .icon { fill: #2f4350; }
+      .shirt { fill: #ffffff; }
+    </style>
+  </defs>
+
+  <!-- Vestido -->
+  <path class="icon" d="
+    M144 126
+    C129 126 119 138 122 153
+    C128 181 143 196 139 226
+    C134 260 123 292 118 326
+    C113 362 97 394 76 430
+    C72 437 77 446 85 446
+    C112 446 128 438 145 442
+    C162 446 177 452 193 446
+    C203 442 215 446 229 446
+    C237 446 242 437 238 430
+    C216 394 201 362 196 326
+    C191 292 180 260 175 226
+    C171 196 186 181 192 153
+    C195 138 185 126 170 126
+    C158 126 154 136 149 140
+    C145 136 142 126 144 126
+    Z"/>
+
+  <!-- Terno / casaco -->
+  <path class="icon" d="
+    M292 126
+    L327 126
+    L351 154
+    L375 126
+    L410 126
+    C424 126 435 137 436 151
+    L448 270
+    C449 280 442 288 432 288
+    L405 288
+    L398 194
+    L392 446
+    C392 455 385 462 376 462
+    L348 462
+    C339 462 332 455 332 446
+    L326 312
+    L314 446
+    C313 455 306 462 297 462
+    L269 462
+    C260 462 253 455 253 446
+    L261 194
+    L254 288
+    L227 288
+    C217 288 210 280 211 270
+    L222 151
+    C224 137 235 126 249 126
+    L284 126
+    L292 126
+    Z"/>
+
+  <!-- Camisa -->
+  <path class="shirt" d="
+    M328 132
+    L351 158
+    L374 132
+    L386 132
+    L365 246
+    L351 274
+    L337 246
+    L316 132
+    Z"/>
+
+  <!-- Lapelas -->
+  <path class="icon" d="M292 126 L337 246 L351 274 L320 188 L306 202 Z"/>
+  <path class="icon" d="M410 126 L365 246 L351 274 L382 188 L396 202 Z"/>
+
+  <!-- Gravata borboleta -->
+  <path class="icon" d="
+    M336 124
+    C344 119 349 120 351 127
+    C353 120 358 119 366 124
+    L366 142
+    C358 147 353 145 351 137
+    C349 145 344 147 336 142
+    Z"/>
+
+  <!-- Botões -->
+  <circle class="icon" cx="351" cy="188" r="4"/>
+  <circle class="icon" cx="351" cy="220" r="4"/>
+</svg>

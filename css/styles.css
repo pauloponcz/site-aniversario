@@ -34,7 +34,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: -3;
-    background-image: url('../assets/fundo-desktop.png');
+    background-image: url('../assets/fundo/fundo-desktop.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -115,7 +115,7 @@ body {
     display: grid;
     place-items: center;
     padding: 22px;
-    background-image: url('../assets/fundo-desktop.png');
+    background-image: url('../assets/fundo/fundo-desktop.png');
     background-size: cover;
     background-position: center center;
     transition: opacity 0.8s ease, visibility 0.8s ease;
@@ -840,12 +840,12 @@ footer {
 
 @media (max-width: 768px) {
     .page-bg {
-        background-image: url('../assets/fundo-mobile.png');
+        background-image: url('../assets/fundo/fundo-mobile.png');
         background-position: center top;
     }
 
     .intro {
-        background-image: url('../assets/fundo-mobile.png');
+        background-image: url('../assets/fundo/fundo-mobile.png');
         background-position: center top;
     }
 }
@@ -1098,6 +1098,18 @@ footer {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+}
+
+.card-icon-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.music-icon-img {
+    width: 72px;
+    height: 72px;
+    padding: 15px;
 }
 
 /* RESPONSIVO DAS NOVAS SEÇÕES */

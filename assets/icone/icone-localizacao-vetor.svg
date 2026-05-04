@@ -1,0 +1,25 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de localização">
+  <title>Ícone de localização</title>
+  <desc>Ícone vetorial de localização com base oval, em azul acinzentado, sem fundo.</desc>
+  <defs>
+    <style>
+      .icon { fill: #2f4350; }
+      .stroke { fill: none; stroke: #2f4350; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <!-- Pin -->
+  <path class="icon" d="M256 72
+    C181 72 124 128 124 202
+    C124 253 159 300 197 354
+    C216 381 236 411 256 448
+    C276 411 296 381 315 354
+    C353 300 388 253 388 202
+    C388 128 331 72 256 72 Z"/>
+
+  <!-- Inner hole -->
+  <circle cx="256" cy="192" r="58" fill="#ffffff"/>
+
+  <!-- Base ring -->
+  <ellipse class="stroke" cx="256" cy="414" rx="121" ry="28"/>
+</svg>

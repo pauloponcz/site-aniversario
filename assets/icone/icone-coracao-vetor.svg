@@ -1,0 +1,32 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ícone de coração">
+  <title>Ícone de coração</title>
+  <desc>Ícone vetorial de coração duplo, em azul acinzentado, sem fundo.</desc>
+  <defs>
+    <linearGradient id="innerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9aa7b3"/>
+      <stop offset="100%" stop-color="#6f808d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer heart -->
+  <path fill="#2f4350" d="M256 444
+    C246 436 233 425 217 412
+    C164 369 100 317 79 249
+    C54 170 105 100 179 100
+    C217 100 246 117 256 145
+    C266 117 295 100 333 100
+    C407 100 458 170 433 249
+    C412 317 348 369 295 412
+    C279 425 266 436 256 444 Z"/>
+
+  <!-- Inner heart -->
+  <path fill="url(#innerGrad)" d="M256 374
+    C250 369 241 361 230 352
+    C191 320 142 280 126 231
+    C108 173 145 124 201 124
+    C230 124 249 137 256 158
+    C263 137 282 124 311 124
+    C367 124 404 173 386 231
+    C370 280 321 320 282 352
+    C271 361 262 369 256 374 Z"/>
+</svg>
