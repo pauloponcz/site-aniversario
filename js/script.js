@@ -153,6 +153,40 @@ pixButtons.forEach((button) => {
     });
 });
 
+function criarNeve() {
+    const camadaNeve = document.querySelector('.sparkle-layer');
+
+    if (!camadaNeve) {
+        return;
+    }
+
+    // const quantidadeFlocos = window.innerWidth <= 768 ? 45 : 75;
+    const quantidadeFlocos = window.innerWidth <= 768 ? 70 : 120;
+    for (let i = 0; i < quantidadeFlocos; i++) {
+        const floco = document.createElement('span');
+
+        const tamanho = Math.random() * 5 + 2;
+        const posicaoX = Math.random() * 100;
+        const duracao = Math.random() * 9 + 8;
+        const atraso = Math.random() * -20;
+        const opacidade = Math.random() * 0.55 + 0.35;
+        const deslocamento = (Math.random() * 140 - 70) + 'px';
+
+        floco.classList.add('snowflake');
+
+        floco.style.left = posicaoX + 'vw';
+        floco.style.setProperty('--size', tamanho + 'px');
+        floco.style.setProperty('--duration', duracao + 's');
+        floco.style.setProperty('--delay', atraso + 's');
+        floco.style.setProperty('--opacity', opacidade);
+        floco.style.setProperty('--drift', deslocamento);
+
+        camadaNeve.appendChild(floco);
+    }
+}
+
+criarNeve();
+
 preencherDataEvento();
 atualizarContagem();
 
