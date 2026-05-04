@@ -16,7 +16,7 @@ function tocarMusica() {
         return;
     }
 
-    bgMusic.volume = 0.11;
+    bgMusic.volume = 0;
 
     bgMusic.play()
         .then(() => {
@@ -126,6 +126,32 @@ if (musicToggle && bgMusic) {
         }
     });
 }
+
+const pixButtons = document.querySelectorAll('.pix-mobile-button');
+
+pixButtons.forEach((button) => {
+    button.addEventListener('click', async () => {
+        const pix = button.getAttribute('data-pix');
+
+        if (!pix) {
+            alert('Pix não configurado.');
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(pix);
+
+            const textoOriginal = button.textContent;
+            button.textContent = 'Pix copiado!';
+
+            setTimeout(() => {
+                button.textContent = textoOriginal;
+            }, 2000);
+        } catch (error) {
+            alert('Não foi possível copiar automaticamente. Copie manualmente: ' + pix);
+        }
+    });
+});
 
 preencherDataEvento();
 atualizarContagem();
