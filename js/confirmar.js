@@ -15,8 +15,8 @@ function salvarEstadoMusica() {
         return;
     }
 
-    localStorage.setItem('musicaTempo', String(bgMusic.currentTime || 0));
-    localStorage.setItem('musicaAtiva', musicaTocando ? 'sim' : 'nao');
+    sessionStorage.setItem('musicaTempo', String(bgMusic.currentTime || 0));
+    sessionStorage.setItem('musicaAtiva', musicaTocando ? 'sim' : 'nao');
 }
 
 function restaurarTempoMusica() {
@@ -24,7 +24,7 @@ function restaurarTempoMusica() {
         return;
     }
 
-    const tempoSalvo = Number(localStorage.getItem('musicaTempo') || 0);
+    const tempoSalvo = Number(sessionStorage.getItem('musicaTempo') || 0);
 
     if (!Number.isNaN(tempoSalvo) && tempoSalvo > 0) {
         bgMusic.currentTime = tempoSalvo;
@@ -42,7 +42,7 @@ function tocarMusica() {
     bgMusic.play()
         .then(() => {
             musicaTocando = true;
-            localStorage.setItem('musicaAtiva', 'sim');
+            sessionStorage.setItem('musicaAtiva', 'sim');
 
             if (musicToggle) {
                 musicToggle.textContent = '⏸️';
@@ -64,7 +64,7 @@ function pausarMusica() {
 
     bgMusic.pause();
     musicaTocando = false;
-    localStorage.setItem('musicaAtiva', 'nao');
+    sessionStorage.setItem('musicaAtiva', 'nao');
     salvarEstadoMusica();
 
     if (musicToggle) {
@@ -317,7 +317,7 @@ function configurarLinkVoltarConvite() {
     }
 }
 
-if (localStorage.getItem('musicaAtiva') === 'sim') {
+if (sessionStorage.getItem('musicaAtiva') === 'sim') {
     tocarMusica();
 }
 

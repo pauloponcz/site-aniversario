@@ -26,7 +26,8 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: var(--texto);
     overflow-x: hidden;
-    background-color: #6fa8cf;
+
+    background-color: #ffffff;
     background-image: url('../assets/fundo/fundo-desktop.png');
     background-size: cover;
     background-position: center center;
@@ -1090,6 +1091,7 @@ footer {
 @media (max-width: 768px) {
 
     body {
+        background-color: #ffffff;
         background-image: url('../assets/fundo/fundo-mobile.png');
         background-position: center top;
         background-attachment: scroll;
