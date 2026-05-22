@@ -26,7 +26,12 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: var(--texto);
     overflow-x: hidden;
-    background: var(--azul-fundo);
+    background-color: #6fa8cf;
+    background-image: url('../assets/fundo/fundo-desktop.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 /* FUNDO PRINCIPAL */
@@ -1083,6 +1088,31 @@ footer {
 
 /* RESPONSIVO CELULAR */
 @media (max-width: 768px) {
+
+    body {
+        background-image: url('../assets/fundo/fundo-mobile.png');
+        background-position: center top;
+        background-attachment: scroll;
+    }
+
+    .page-bg {
+        background-image: url('../assets/fundo/fundo-mobile.png');
+        background-position: center top;
+    }
+
+    .intro {
+        background-image: url('../assets/fundo/fundo-mobile.png');
+        background-position: center top;
+    }
+
+    .section {
+        padding: 42px 18px;
+    }
+
+    .section-title {
+        margin-bottom: 24px;
+    }
+
     .page-bg {
         background-image: url('../assets/fundo/fundo-mobile.png');
         background-position: center top;

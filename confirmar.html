@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Confirmar presença | XV Sarah&Sofia</title>
+    <title>Confirmar presença | XV Sarah&Sofia</title>
 
-  <link rel="icon" type="image/svg+xml" href="./assets/icone/favicon-xv.svg">
+    <link rel="icon" type="image/svg+xml" href="./assets/icone/favicon-xv.svg">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
 </head>
 
 <body>
-  <div class="page-bg"></div>
-  <div class="sparkle-layer"></div>
+    <div class="page-bg"></div>
+    <div class="sparkle-layer"></div>
 
-  <main>
-    <section class="hero confirm-page">
-      <div class="hero-content confirm-content">
-        <div class="xv-title">
-          <span class="xv-title__number">XV</span>
-          <span class="xv-title__text">Quinze</span>
-        </div>
+    <audio id="bgMusic" loop>
+        <source src="./assets/musica/musica.mp3" type="audio/mpeg">
+    </audio>
 
-        <p class="birthday-name">Sarah . Sofia</p>
+    <button class="music-toggle" id="musicToggle" type="button">
+        🎵
+    </button>
 
-        <div class="confirmation-card">
-          <div class="section-title confirm-title">
-            <div class="script-title">Confirme</div>
-            <h3>Sua presença</h3>
-          </div>
+    <main>
+        <section class="hero confirm-page">
+            <div class="hero-content confirm-content">
+                <div class="xv-title">
+                    <span class="xv-title__number">XV</span>
+                    <span class="xv-title__text">Quinze</span>
+                </div>
 
-          <p class="confirm-greeting" id="confirmGreeting">
-            Carregando convite...
-          </p>
+                <p class="birthday-name">Sarah . Sofia</p>
 
-          <p class="confirm-text" id="confirmText">
-            Aguarde enquanto buscamos os convidados vinculados a este convite.
-          </p>
+                <div class="confirmation-card">
+                    <div class="section-title confirm-title">
+                        <div class="script-title">Confirme</div>
+                        <h3>Sua presença</h3>
+                    </div>
 
-          <div class="guest-list" id="guestList"></div>
+                    <p class="confirm-greeting" id="confirmGreeting">
+                        Carregando convite...
+                    </p>
 
-          <div class="confirm-message" id="confirmMessage"></div>
+                    <p class="confirm-text" id="confirmText">
+                        Aguarde enquanto buscamos os convidados vinculados a este convite.
+                    </p>
 
-          <a class="btn btn-outline btn--spaced" id="backToInvite" href="./index.html">
-            Voltar para o convite
-          </a>
-        </div>
-      </div>
-    </section>
-  </main>
+                    <div class="guest-list" id="guestList"></div>
 
-  <script src="./js/confirmar.js"></script>
+                    <div class="confirm-message" id="confirmMessage"></div>
+
+                    <a class="btn btn-outline btn--spaced" id="backToInvite" href="./index.html">
+                        Voltar para o convite
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/confirmar.js"></script>
 </body>
+
 </html>

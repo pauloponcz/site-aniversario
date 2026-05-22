@@ -11,16 +11,39 @@ const musicToggle = document.getElementById('musicToggle');
 
 let musicaTocando = false;
 
+function salvarEstadoMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    localStorage.setItem('musicaTempo', String(bgMusic.currentTime || 0));
+    localStorage.setItem('musicaAtiva', musicaTocando ? 'sim' : 'nao');
+}
+
+function restaurarTempoMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    const tempoSalvo = Number(localStorage.getItem('musicaTempo') || 0);
+
+    if (!Number.isNaN(tempoSalvo) && tempoSalvo > 0) {
+        bgMusic.currentTime = tempoSalvo;
+    }
+}
+
 function tocarMusica() {
     if (!bgMusic) {
         return;
     }
 
     bgMusic.volume = 0.1;
+    restaurarTempoMusica();
 
     bgMusic.play()
         .then(() => {
             musicaTocando = true;
+            localStorage.setItem('musicaAtiva', 'sim');
 
             if (musicToggle) {
                 musicToggle.textContent = '⏸️';
@@ -35,6 +58,20 @@ function tocarMusica() {
         });
 }
 
+function pausarMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    bgMusic.pause();
+    musicaTocando = false;
+    localStorage.setItem('musicaAtiva', 'nao');
+    salvarEstadoMusica();
+
+    if (musicToggle) {
+        musicToggle.textContent = '🎵';
+    }
+}
 function abrirConvite() {
     if (intro) {
         intro.classList.add('hide');
@@ -120,11 +157,11 @@ if (musicToggle && bgMusic) {
         if (!musicaTocando) {
             tocarMusica();
         } else {
-            bgMusic.pause();
-            musicaTocando = false;
-            musicToggle.textContent = '🎵';
+            pausarMusica();
         }
     });
+
+    bgMusic.addEventListener('timeupdate', salvarEstadoMusica);
 }
 
 // const pixButtons = document.querySelectorAll('.pix-mobile-button');
@@ -239,6 +276,10 @@ function configurarLinksConfirmacao() {
 configurarLinksConfirmacao();
 
 criarNeve();
+
+if (localStorage.getItem('musicaAtiva') === 'sim') {
+    tocarMusica();
+}
 
 preencherDataEvento();
 atualizarContagem();

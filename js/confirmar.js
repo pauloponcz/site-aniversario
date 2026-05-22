@@ -5,6 +5,86 @@ const confirmText = document.getElementById('confirmText');
 const guestList = document.getElementById('guestList');
 const confirmMessage = document.getElementById('confirmMessage');
 
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+
+let musicaTocando = false;
+
+function salvarEstadoMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    localStorage.setItem('musicaTempo', String(bgMusic.currentTime || 0));
+    localStorage.setItem('musicaAtiva', musicaTocando ? 'sim' : 'nao');
+}
+
+function restaurarTempoMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    const tempoSalvo = Number(localStorage.getItem('musicaTempo') || 0);
+
+    if (!Number.isNaN(tempoSalvo) && tempoSalvo > 0) {
+        bgMusic.currentTime = tempoSalvo;
+    }
+}
+
+function tocarMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    bgMusic.volume = 0.1;
+    restaurarTempoMusica();
+
+    bgMusic.play()
+        .then(() => {
+            musicaTocando = true;
+            localStorage.setItem('musicaAtiva', 'sim');
+
+            if (musicToggle) {
+                musicToggle.textContent = '⏸️';
+            }
+        })
+        .catch(() => {
+            musicaTocando = false;
+
+            if (musicToggle) {
+                musicToggle.textContent = '🎵';
+            }
+        });
+}
+
+function pausarMusica() {
+    if (!bgMusic) {
+        return;
+    }
+
+    bgMusic.pause();
+    musicaTocando = false;
+    localStorage.setItem('musicaAtiva', 'nao');
+    salvarEstadoMusica();
+
+    if (musicToggle) {
+        musicToggle.textContent = '🎵';
+    }
+}
+
+if (musicToggle && bgMusic) {
+    musicToggle.addEventListener('click', function () {
+        if (!musicaTocando) {
+            tocarMusica();
+        } else {
+            pausarMusica();
+        }
+    });
+
+    bgMusic.addEventListener('timeupdate', salvarEstadoMusica);
+}
+
+
 function obterParametroUrl(nome) {
     const parametros = new URLSearchParams(window.location.search);
     return parametros.get(nome);
@@ -237,7 +317,9 @@ function configurarLinkVoltarConvite() {
     }
 }
 
-
+if (localStorage.getItem('musicaAtiva') === 'sim') {
+    tocarMusica();
+}
 
 configurarLinkVoltarConvite();
 criarNeve();
