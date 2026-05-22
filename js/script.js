@@ -127,31 +127,31 @@ if (musicToggle && bgMusic) {
     });
 }
 
-const pixButtons = document.querySelectorAll('.pix-mobile-button');
+// const pixButtons = document.querySelectorAll('.pix-mobile-button');
 
-pixButtons.forEach((button) => {
-    button.addEventListener('click', async () => {
-        const pix = button.getAttribute('data-pix');
+// pixButtons.forEach((button) => {
+//     button.addEventListener('click', async () => {
+//         const pix = button.getAttribute('data-pix');
 
-        if (!pix) {
-            alert('Pix não configurado.');
-            return;
-        }
+//         if (!pix) {
+//             alert('Pix não configurado.');
+//             return;
+//         }
 
-        try {
-            await navigator.clipboard.writeText(pix);
+//         try {
+//             await navigator.clipboard.writeText(pix);
 
-            const textoOriginal = button.textContent;
-            button.textContent = 'Pix copiado!';
+//             const textoOriginal = button.textContent;
+//             button.textContent = 'Pix copiado!';
 
-            setTimeout(() => {
-                button.textContent = textoOriginal;
-            }, 2000);
-        } catch (error) {
-            alert('Não foi possível copiar automaticamente. Copie manualmente: ' + pix);
-        }
-    });
-});
+//             setTimeout(() => {
+//                 button.textContent = textoOriginal;
+//             }, 2000);
+//         } catch (error) {
+//             alert('Não foi possível copiar automaticamente. Copie manualmente: ' + pix);
+//         }
+//     });
+// });
 
 function criarNeve() {
     const camadaNeve = document.querySelector('.sparkle-layer');
@@ -184,6 +184,39 @@ function criarNeve() {
         camadaNeve.appendChild(floco);
     }
 }
+
+function obterIdGrupoDaUrl() {
+    const parametros = new URLSearchParams(window.location.search);
+    let idGrupo = parametros.get('id');
+
+    if (!idGrupo && window.location.hash.includes('?')) {
+        const hashQuery = window.location.hash.split('?')[1];
+        const parametrosHash = new URLSearchParams(hashQuery);
+        idGrupo = parametrosHash.get('id');
+    }
+
+    return idGrupo;
+}
+
+function configurarLinksConfirmacao() {
+    const idGrupo = obterIdGrupoDaUrl();
+    const linksConfirmacao = document.querySelectorAll('.js-confirm-link');
+
+    linksConfirmacao.forEach((link) => {
+        const destino = idGrupo
+            ? `confirmar.html?id=${encodeURIComponent(idGrupo)}`
+            : 'confirmar.html';
+
+        link.setAttribute('href', destino);
+
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = destino;
+        });
+    });
+}
+
+configurarLinksConfirmacao();
 
 criarNeve();
 
