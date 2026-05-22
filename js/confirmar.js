@@ -1,54 +1,34 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycbx-0sqebHQtaETkbwC9_IWQ0NZ9DUMIXQgRt4S-vmmebOnL2K2LPH0DgjJarkh5e9t8ZQ/exec';
-
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
+const API_URL = 'https://script.google.com/macros/s/AKfycbyxTPnZdS7eVfTM7Cq3zHYTfpZmIw9hfv0l7tpSlb9YklefdjLsNm3z14_3fOszEwQ3rw/exec';
 
 const confirmGreeting = document.getElementById('confirmGreeting');
 const confirmText = document.getElementById('confirmText');
 const guestList = document.getElementById('guestList');
 const confirmMessage = document.getElementById('confirmMessage');
 
-let musicaTocando = false;
-
 function obterParametroUrl(nome) {
     const parametros = new URLSearchParams(window.location.search);
     return parametros.get(nome);
 }
 
-function tocarMusica() {
-    if (!bgMusic) {
-        return;
+function obterParametroConviteDaUrl() {
+    const tokenGrupo = obterParametroUrl('token');
+    const idGrupo = obterParametroUrl('id');
+
+    if (tokenGrupo) {
+        return {
+            tipo: 'token',
+            valor: tokenGrupo
+        };
     }
 
-    bgMusic.volume = 0.1;
+    if (idGrupo) {
+        return {
+            tipo: 'id',
+            valor: idGrupo
+        };
+    }
 
-    bgMusic.play()
-        .then(() => {
-            musicaTocando = true;
-
-            if (musicToggle) {
-                musicToggle.textContent = '⏸️';
-            }
-        })
-        .catch(() => {
-            musicaTocando = false;
-
-            if (musicToggle) {
-                musicToggle.textContent = '🎵';
-            }
-        });
-}
-
-if (musicToggle && bgMusic) {
-    musicToggle.addEventListener('click', function () {
-        if (!musicaTocando) {
-            tocarMusica();
-        } else {
-            bgMusic.pause();
-            musicaTocando = false;
-            musicToggle.textContent = '🎵';
-        }
-    });
+    return null;
 }
 
 function criarNeve() {
@@ -86,15 +66,15 @@ function criarNeve() {
 }
 
 async function buscarConvidados() {
-    const idGrupo = obterParametroUrl('id');
+    const parametroConvite = obterParametroConviteDaUrl();
 
-    if (!idGrupo) {
-        mostrarErro('Link inválido. O ID do convite não foi informado.');
+    if (!parametroConvite) {
+        mostrarErro('Link inválido. O código do convite não foi informado.');
         return;
     }
 
     try {
-        const resposta = await fetch(`${API_URL}?acao=buscar&id=${encodeURIComponent(idGrupo)}`);
+        const resposta = await fetch(`${API_URL}?acao=buscar&${parametroConvite.tipo}=${encodeURIComponent(parametroConvite.valor)}`);
         const dados = await resposta.json();
 
         if (!dados.sucesso) {
@@ -109,9 +89,17 @@ async function buscarConvidados() {
 }
 
 function montarTelaConfirmacao(dados) {
-    confirmGreeting.textContent = `Olá, ${dados.nomeExibicao}`;
+    if (confirmGreeting) {
+        confirmGreeting.textContent = `Olá, ${dados.nomeExibicao}`;
+    }
 
-    confirmText.textContent = 'Estamos muito felizes em convidar você para celebrar esse momento especial conosco. Para nos ajudar na organização da festa, confirme abaixo quem poderá estar presente nesta noite inesquecível.';
+    if (confirmText) {
+        confirmText.textContent = 'Estamos muito felizes em convidar você para celebrar esse momento especial conosco. Para nos ajudar na organização da festa, confirme abaixo quem poderá estar presente nesta noite inesquecível.';
+    }
+
+    if (!guestList) {
+        return;
+    }
 
     guestList.innerHTML = '';
 
@@ -133,6 +121,7 @@ function montarTelaConfirmacao(dados) {
             status.textContent = convidado.dataConfirmacao
                 ? `Presença confirmada em ${convidado.dataConfirmacao}`
                 : 'Presença confirmada';
+
             status.className = 'guest-status guest-status--confirmed';
         } else {
             status.textContent = 'Aguardando confirmação';
@@ -144,12 +133,15 @@ function montarTelaConfirmacao(dados) {
 
         const botao = document.createElement('button');
         botao.type = 'button';
-        botao.className = jaConfirmado ? 'btn guest-button guest-button--confirmed' : 'btn guest-button';
+        botao.className = jaConfirmado
+            ? 'btn guest-button guest-button--confirmed'
+            : 'btn guest-button';
+
         botao.textContent = jaConfirmado ? 'Confirmado' : 'Confirmar presença';
         botao.disabled = jaConfirmado;
 
         botao.addEventListener('click', () => {
-            confirmarPresenca(dados.idGrupo, convidado.linha, botao, status);
+            confirmarPresenca(dados.idGrupo, dados.tokenGrupo, convidado.linha, botao, status);
         });
 
         item.appendChild(info);
@@ -159,12 +151,18 @@ function montarTelaConfirmacao(dados) {
     });
 }
 
-async function confirmarPresenca(idGrupo, linha, botao, statusEl) {
+async function confirmarPresenca(idGrupo, tokenGrupo, linha, botao, statusEl) {
     botao.disabled = true;
     botao.textContent = 'Confirmando...';
 
     try {
-        const url = `${API_URL}?acao=confirmar&id=${encodeURIComponent(idGrupo)}&linha=${encodeURIComponent(linha)}`;
+        let url = `${API_URL}?acao=confirmar&linha=${encodeURIComponent(linha)}`;
+
+        if (tokenGrupo) {
+            url += `&token=${encodeURIComponent(tokenGrupo)}`;
+        } else {
+            url += `&id=${encodeURIComponent(idGrupo)}`;
+        }
 
         const resposta = await fetch(url);
         const dados = await resposta.json();
@@ -195,34 +193,52 @@ async function confirmarPresenca(idGrupo, linha, botao, statusEl) {
 }
 
 function mostrarErro(mensagem) {
-    confirmGreeting.textContent = 'Ops...';
-    confirmText.textContent = mensagem;
-    guestList.innerHTML = '';
+    if (confirmGreeting) {
+        confirmGreeting.textContent = 'Ops...';
+    }
+
+    if (confirmText) {
+        confirmText.textContent = mensagem;
+    }
+
+    if (guestList) {
+        guestList.innerHTML = '';
+    }
 }
 
 function mostrarMensagem(mensagem, erro) {
+    if (!confirmMessage) {
+        return;
+    }
+
     confirmMessage.textContent = mensagem;
-    confirmMessage.className = erro ? 'confirm-message confirm-message--error' : 'confirm-message confirm-message--success';
+    confirmMessage.className = erro
+        ? 'confirm-message confirm-message--error'
+        : 'confirm-message confirm-message--success';
 
     setTimeout(() => {
         confirmMessage.textContent = '';
         confirmMessage.className = 'confirm-message';
     }, 3500);
 }
-function configurarLinksConfirmacao() {
-    const parametros = new URLSearchParams(window.location.search);
-    const idGrupo = parametros.get('id');
 
-    const linksConfirmacao = document.querySelectorAll('.js-confirm-link');
+function configurarLinkVoltarConvite() {
+    const parametroConvite = obterParametroConviteDaUrl();
+    const backToInvite = document.getElementById('backToInvite');
 
-    linksConfirmacao.forEach((link) => {
-        if (idGrupo) {
-            link.href = `confirmar.html?id=${encodeURIComponent(idGrupo)}`;
-        } else {
-            link.href = 'confirmar.html';
-        }
-    });
+    if (!backToInvite) {
+        return;
+    }
+
+    if (parametroConvite) {
+        backToInvite.href = `./index.html?${parametroConvite.tipo}=${encodeURIComponent(parametroConvite.valor)}`;
+    } else {
+        backToInvite.href = './index.html';
+    }
 }
 
+
+
+configurarLinkVoltarConvite();
 criarNeve();
 buscarConvidados();

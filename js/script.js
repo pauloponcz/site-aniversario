@@ -185,27 +185,47 @@ function criarNeve() {
     }
 }
 
-function obterIdGrupoDaUrl() {
+function obterParametroConviteDaUrl() {
     const parametros = new URLSearchParams(window.location.search);
+
+    let tokenGrupo = parametros.get('token');
     let idGrupo = parametros.get('id');
 
-    if (!idGrupo && window.location.hash.includes('?')) {
+    if ((!tokenGrupo && !idGrupo) && window.location.hash.includes('?')) {
         const hashQuery = window.location.hash.split('?')[1];
         const parametrosHash = new URLSearchParams(hashQuery);
+
+        tokenGrupo = parametrosHash.get('token');
         idGrupo = parametrosHash.get('id');
     }
 
-    return idGrupo;
+    if (tokenGrupo) {
+        return {
+            tipo: 'token',
+            valor: tokenGrupo
+        };
+    }
+
+    if (idGrupo) {
+        return {
+            tipo: 'id',
+            valor: idGrupo
+        };
+    }
+
+    return null;
 }
 
 function configurarLinksConfirmacao() {
-    const idGrupo = obterIdGrupoDaUrl();
+    const parametroConvite = obterParametroConviteDaUrl();
     const linksConfirmacao = document.querySelectorAll('.js-confirm-link');
 
     linksConfirmacao.forEach((link) => {
-        const destino = idGrupo
-            ? `confirmar.html?id=${encodeURIComponent(idGrupo)}`
-            : 'confirmar.html';
+        let destino = 'confirmar.html';
+
+        if (parametroConvite) {
+            destino = `confirmar.html?${parametroConvite.tipo}=${encodeURIComponent(parametroConvite.valor)}`;
+        }
 
         link.setAttribute('href', destino);
 
