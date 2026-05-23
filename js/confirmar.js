@@ -1,4 +1,4 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycbyxTPnZdS7eVfTM7Cq3zHYTfpZmIw9hfv0l7tpSlb9YklefdjLsNm3z14_3fOszEwQ3rw/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycby1n91z5hsHP8noBpAIb9ZZ9lzqJpRkyJKTIXQbqlrW3ERIzW2t93FOgzwObXaCcnn2ug/exec';
 
 const confirmGreeting = document.getElementById('confirmGreeting');
 const confirmText = document.getElementById('confirmText');
@@ -170,7 +170,7 @@ async function buscarConvidados() {
 
 function montarTelaConfirmacao(dados) {
     if (confirmGreeting) {
-        confirmGreeting.textContent = `${dados.nomeExibicao}`;
+        confirmGreeting.textContent = `Olá, ${dados.nomeExibicao}`;
     }
 
     if (confirmText) {
@@ -195,7 +195,9 @@ function montarTelaConfirmacao(dados) {
 
         const status = document.createElement('span');
 
-        const jaConfirmado = String(convidado.status).toLowerCase() === 'confirmado';
+        const statusAtual = String(convidado.status || '').toLowerCase();
+        const jaConfirmado = statusAtual === 'confirmado';
+        const jaRecusado = statusAtual === 'recusado';
 
         if (jaConfirmado) {
             status.textContent = convidado.dataConfirmacao
@@ -203,40 +205,78 @@ function montarTelaConfirmacao(dados) {
                 : 'Presença confirmada';
 
             status.className = 'guest-status guest-status--confirmed';
+        } else if (jaRecusado) {
+            status.textContent = convidado.dataConfirmacao
+                ? `Não poderá comparecer. Resposta registrada em ${convidado.dataConfirmacao}`
+                : 'Não poderá comparecer';
+
+            status.className = 'guest-status guest-status--declined';
         } else {
-            status.textContent = 'Aguardando confirmação';
+            status.textContent = 'Aguardando resposta';
             status.className = 'guest-status';
         }
 
         info.appendChild(nome);
         info.appendChild(status);
 
-        const botao = document.createElement('button');
-        botao.type = 'button';
-        botao.className = jaConfirmado
+        const actions = document.createElement('div');
+        actions.className = 'guest-actions';
+
+        const botaoConfirmar = document.createElement('button');
+        botaoConfirmar.type = 'button';
+        botaoConfirmar.className = jaConfirmado
             ? 'btn guest-button guest-button--confirmed'
             : 'btn guest-button';
 
-        botao.textContent = jaConfirmado ? 'Confirmado' : 'Confirmar presença';
-        botao.disabled = jaConfirmado;
+        botaoConfirmar.textContent = jaConfirmado ? 'Confirmado' : 'Confirmar presença';
+        botaoConfirmar.disabled = jaConfirmado || jaRecusado;
 
-        botao.addEventListener('click', () => {
-            confirmarPresenca(dados.idGrupo, dados.tokenGrupo, convidado.linha, botao, status);
+        botaoConfirmar.addEventListener('click', () => {
+            registrarResposta(dados.idGrupo, dados.tokenGrupo, convidado.linha, 'confirmado', botaoConfirmar, actions, status);
         });
 
+        const botaoRecusar = document.createElement('button');
+        botaoRecusar.type = 'button';
+        botaoRecusar.className = jaRecusado
+            ? 'btn btn-outline guest-button guest-button--declined'
+            : 'btn btn-outline guest-button guest-button--decline';
+
+        botaoRecusar.textContent = jaRecusado ? 'Recusado' : 'Não vou poder ir';
+        botaoRecusar.disabled = jaConfirmado || jaRecusado;
+
+        botaoRecusar.addEventListener('click', () => {
+            registrarResposta(dados.idGrupo, dados.tokenGrupo, convidado.linha, 'recusado', botaoRecusar, actions, status);
+        });
+
+        if (jaConfirmado) {
+            actions.appendChild(botaoConfirmar);
+        } else if (jaRecusado) {
+            actions.appendChild(botaoRecusar);
+        } else {
+            actions.appendChild(botaoConfirmar);
+            actions.appendChild(botaoRecusar);
+        }
+
         item.appendChild(info);
-        item.appendChild(botao);
+        item.appendChild(actions);
 
         guestList.appendChild(item);
     });
 }
 
-async function confirmarPresenca(idGrupo, tokenGrupo, linha, botao, statusEl) {
-    botao.disabled = true;
-    botao.textContent = 'Confirmando...';
+async function registrarResposta(idGrupo, tokenGrupo, linha, statusResposta, botaoClicado, actionsEl, statusEl) {
+    const botoes = actionsEl.querySelectorAll('button');
+
+    botoes.forEach((botao) => {
+        botao.disabled = true;
+    });
+
+    botaoClicado.textContent = statusResposta === 'confirmado'
+        ? 'Confirmando...'
+        : 'Registrando...';
 
     try {
-        let url = `${API_URL}?acao=confirmar&linha=${encodeURIComponent(linha)}`;
+        let url = `${API_URL}?acao=confirmar&linha=${encodeURIComponent(linha)}&status=${encodeURIComponent(statusResposta)}`;
 
         if (tokenGrupo) {
             url += `&token=${encodeURIComponent(tokenGrupo)}`;
@@ -248,27 +288,55 @@ async function confirmarPresenca(idGrupo, tokenGrupo, linha, botao, statusEl) {
         const dados = await resposta.json();
 
         if (!dados.sucesso) {
-            botao.disabled = false;
-            botao.textContent = 'Confirmar presença';
-            mostrarMensagem(dados.mensagem || 'Não foi possível confirmar a presença.', true);
+            botoes.forEach((botao) => {
+                botao.disabled = false;
+            });
+
+            mostrarMensagem(dados.mensagem || 'Não foi possível registrar a resposta.', true);
             return;
         }
 
-        botao.textContent = 'Confirmado';
-        botao.classList.add('guest-button--confirmed');
-        botao.disabled = true;
+        actionsEl.innerHTML = '';
 
-        statusEl.textContent = dados.dataConfirmacao
-            ? `Presença confirmada em ${dados.dataConfirmacao}`
-            : 'Presença confirmada';
+        const botaoFinal = document.createElement('button');
+        botaoFinal.type = 'button';
+        botaoFinal.disabled = true;
 
-        statusEl.className = 'guest-status guest-status--confirmed';
+        if (statusResposta === 'confirmado') {
+            botaoFinal.className = 'btn guest-button guest-button--confirmed';
+            botaoFinal.textContent = 'Confirmado';
 
-        mostrarMensagem('Presença confirmada com sucesso!', false);
+            statusEl.textContent = dados.dataConfirmacao
+                ? `Presença confirmada em ${dados.dataConfirmacao}`
+                : 'Presença confirmada';
+
+            statusEl.className = 'guest-status guest-status--confirmed';
+
+            mostrarMensagem('Presença confirmada com sucesso!', false);
+        } else {
+            botaoFinal.className = 'btn btn-outline guest-button guest-button--declined';
+            botaoFinal.textContent = 'Recusado';
+
+            statusEl.textContent = dados.dataConfirmacao
+                ? `Não poderá comparecer. Resposta registrada em ${dados.dataConfirmacao}`
+                : 'Não poderá comparecer';
+
+            statusEl.className = 'guest-status guest-status--declined';
+
+            mostrarMensagem('Resposta registrada com sucesso.', false);
+        }
+
+        actionsEl.appendChild(botaoFinal);
     } catch (erro) {
-        botao.disabled = false;
-        botao.textContent = 'Confirmar presença';
-        mostrarMensagem('Erro ao confirmar presença. Tente novamente.', true);
+        botoes.forEach((botao) => {
+            botao.disabled = false;
+        });
+
+        botaoClicado.textContent = statusResposta === 'confirmado'
+            ? 'Confirmar presença'
+            : 'Não vou poder ir';
+
+        mostrarMensagem('Erro ao registrar resposta. Tente novamente.', true);
     }
 }
 

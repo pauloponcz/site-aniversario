@@ -1594,6 +1594,40 @@ footer {
     color: #ffe1e1;
 }
 
+.guest-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.guest-button--decline {
+    color: var(--branco);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.guest-button--declined {
+    opacity: 0.75;
+    cursor: default;
+}
+
+.guest-status--declined {
+    color: rgba(255, 255, 255, 0.88);
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .guest-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .guest-actions .guest-button {
+        width: 100%;
+    }
+}
+
 @media (max-width: 600px) {
     .confirmation-card {
         padding: 34px 20px;
