@@ -241,7 +241,7 @@ function montarTelaConfirmacao(dados) {
             ? 'btn btn-outline guest-button guest-button--declined'
             : 'btn btn-outline guest-button guest-button--decline';
 
-        botaoRecusar.textContent = jaRecusado ? 'Recusado' : 'Não vou poder ir';
+        botaoRecusar.textContent = jaRecusado ? 'Recusado' : 'Não poderei comparecer';
         botaoRecusar.disabled = jaConfirmado || jaRecusado;
 
         botaoRecusar.addEventListener('click', () => {
