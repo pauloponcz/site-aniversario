@@ -1132,6 +1132,97 @@ footer {
     .section-title {
         margin-bottom: 24px;
     }
+
+    .hero {
+        padding-left: 34px;
+        padding-right: 34px;
+    }
+
+    .hero-content {
+        width: 100%;
+        max-width: 430px;
+        padding-left: 18px;
+        padding-right: 18px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-text {
+        width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+
+    .date-card {
+        width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .actions {
+        width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+        .container,
+    .hero-content,
+    .confirm-content {
+        width: 100%;
+        max-width: 430px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .section {
+        padding-left: 34px;
+        padding-right: 34px;
+    }
+
+    .cards,
+    .location-box,
+    .countdown,
+    .faq-list,
+    .gift-box,
+    .special-message,
+    .notice-box,
+    .final-message,
+    .rsvp,
+    .confirmation-card {
+        width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .card,
+    .count-item,
+    .map-box,
+    .gift-box,
+    .special-message,
+    .notice-box,
+    .final-message,
+    .rsvp,
+    .confirmation-card,
+    .faq-list details {
+        max-width: 100%;
+    }
+
+    .hero-text,
+    .date-card,
+    .actions {
+        width: 100%;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1199,6 +1290,80 @@ footer {
         width: 46px;
         height: 46px;
     }
+    
+    .hero {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .hero-content {
+        max-width: 360px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .hero-text {
+        max-width: 300px;
+        font-size: 0.86rem;
+        line-height: 1.6;
+    }
+
+    .date-card {
+        max-width: 300px;
+    }
+
+    .actions {
+        max-width: 300px;
+    }
+
+    .date-card div {
+        padding: 16px 10px;
+    }
+
+        .container,
+    .hero-content,
+    .confirm-content {
+        max-width: 360px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .section {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .cards,
+    .location-box,
+    .countdown,
+    .faq-list,
+    .gift-box,
+    .special-message,
+    .notice-box,
+    .final-message,
+    .rsvp,
+    .confirmation-card {
+        max-width: 300px;
+    }
+
+    .hero-text,
+    .date-card,
+    .actions {
+        max-width: 300px;
+    }
+
+    .card,
+    .gift-box,
+    .special-message,
+    .notice-box,
+    .final-message,
+    .rsvp,
+    .confirmation-card,
+    .faq-list details {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
 }
 
 /* EFEITO VIDRO MAIS REALISTA */
