@@ -174,7 +174,7 @@ function montarTelaConfirmacao(dados) {
     }
 
     if (confirmText) {
-        confirmText.textContent = 'Estamos muito felizes em convidar você para celebrar esse momento especial conosco. Para nos ajudar na organização da festa, confirme abaixo quem poderá estar presente nesta noite inesquecível.';
+        confirmText.textContent = 'Estamos muito felizes em convidar você para celebrar esse momento especial conosco. Para nos ajudar na organização da festa, confirme abaixo quem poderá estar presente nesta noite inesquecível. Para nos ajudar na organização, confirme sua presença até o dia 30/06/2026 clicando no botão abaixo.';
     }
 
     if (!guestList) {
