@@ -170,7 +170,7 @@ async function buscarConvidados() {
 
 function montarTelaConfirmacao(dados) {
     if (confirmGreeting) {
-        confirmGreeting.textContent = `Olá, ${dados.nomeExibicao}`;
+        confirmGreeting.textContent = `${dados.nomeExibicao}`;
     }
 
     if (confirmText) {
