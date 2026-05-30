@@ -273,7 +273,28 @@ function configurarLinksConfirmacao() {
     });
 }
 
+function configurarLinksPresentes() {
+    const parametroConvite = obterParametroConviteDaUrl();
+    const linksPresentes = document.querySelectorAll('.js-gift-link');
+
+    linksPresentes.forEach((link) => {
+        let destino = './presentes.html';
+
+        if (parametroConvite) {
+            destino = `./presentes.html?${parametroConvite.tipo}=${encodeURIComponent(parametroConvite.valor)}`;
+        }
+
+        link.setAttribute('href', destino);
+
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = destino;
+        });
+    });
+}
+
 configurarLinksConfirmacao();
+configurarLinksPresentes();
 
 criarNeve();
 

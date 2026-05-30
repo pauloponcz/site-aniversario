@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Lista de Presentes | XV Sarah e Sofia</title>
+
+    <link rel="icon" type="image/svg+xml" href="./assets/icone/favicon-xv.svg">
+
+    <link rel="preload" as="image" href="./assets/fundo/fundo-desktop.png">
+    <link rel="preload" as="image" href="./assets/fundo/fundo-mobile.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+    <div class="page-bg"></div>
+    <div class="sparkle-layer"></div>
+
+    <audio id="bgMusic" loop>
+        <source src="./assets/musica/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-toggle" id="musicToggle" type="button">
+        🎵
+    </button>
+
+    <main>
+        <section class="section gifts-page">
+            <div class="container">
+                <header class="section-title">
+                    <p class="script-title">Presentes</p>
+                    <h3>Lista de desejos</h3>
+                </header>
+
+                <div class="gift-intro-card">
+                    <p>
+                        Se desejar presentear Sarah e Sofia, separamos algumas sugestões escolhidas com carinho.
+                    </p>
+                </div>
+
+                <div class="gift-tabs">
+                    <button class="gift-tab active" type="button" data-gift-tab="sarah">
+                        Sarah
+                    </button>
+
+                    <button class="gift-tab" type="button" data-gift-tab="sofia">
+                        Sofia
+                    </button>
+                </div>
+
+                <section class="gift-panel active" id="gift-sarah">
+                    <div class="section-title gift-panel-title">
+                        <p class="script-title">Sarah</p>
+                        <h3>Sugestões de presentes</h3>
+                    </div>
+
+                    <article class="pix-person-card">
+                        <div class="pix-person-header">
+                            <img src="./assets/icone/icone-presente-vetor.svg" alt="Ícone de presente"
+                                class="card-icon-img">
+
+                            <div>
+                                <span>Pix especial</span>
+                                <h4>Presentear Sarah</h4>
+                                <p>
+                                    Caso prefira, você também pode presentear a Sarah com um Pix no valor que desejar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pix-mobile-area">
+                            <span class="pix-label">Chave Pix CPF</span>
+
+                            <strong class="pix-key" id="pixKeySarah">
+                                000.000.000-00
+                            </strong>
+
+                            <button class="btn pix-copy-button" type="button" data-pix-target="pixKeySarah">
+                                Copiar Pix da Sarah
+                            </button>
+                        </div>
+
+                        <div class="pix-desktop-area">
+                            <span class="pix-label">Escaneie o QR Code</span>
+
+                            <img src="./assets/pix/qrcode-sarah.png" alt="QR Code Pix Sarah" class="pix-qrcode">
+                        </div>
+                    </article>
+
+                    <div class="gift-gallery" id="giftGallerySarah">
+                        <p class="gift-loading">Carregando presentes da Sarah...</p>
+                    </div>
+                </section>
+                <section class="gift-panel" id="gift-sofia">
+                    <div class="section-title gift-panel-title">
+                        <p class="script-title">Sofia</p>
+                        <h3>Sugestões de presentes</h3>
+                    </div>
+
+                    <article class="pix-person-card">
+                        <div class="pix-person-header">
+                            <img src="./assets/icone/icone-presente-vetor.svg" alt="Ícone de presente"
+                                class="card-icon-img">
+
+                            <div>
+                                <span>Pix especial</span>
+                                <h4>Presentear Sofia</h4>
+                                <p>
+                                    Caso prefira, você também pode presentear a Sofia com um Pix no valor que desejar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="pix-mobile-area">
+                            <span class="pix-label">Chave Pix CPF</span>
+
+                            <strong class="pix-key" id="pixKeySofia">
+                                111.111.111-11
+                            </strong>
+
+                            <button class="btn pix-copy-button" type="button" data-pix-target="pixKeySofia">
+                                Copiar Pix da Sofia
+                            </button>
+                        </div>
+
+                        <div class="pix-desktop-area">
+                            <span class="pix-label">Escaneie o QR Code</span>
+
+                            <img src="./assets/pix/qrcode-sofia.png" alt="QR Code Pix Sofia" class="pix-qrcode">
+                        </div>
+                    </article>
+
+                    <div class="gift-gallery" id="giftGallerySofia">
+                        <p class="gift-loading">Carregando presentes da Sofia...</p>
+                    </div>
+                </section>
+
+                <div class="gift-page-actions">
+                    <a class="btn btn-outline" id="backToInviteFromGifts" href="./index.html">
+                        Voltar para o convite
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/presentes.js"></script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycby1n91z5hsHP8noBpAIb9ZZ9lzqJpRkyJKTIXQbqlrW3ERIzW2t93FOgzwObXaCcnn2ug/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbyU-Gmw3-QIVEt85a61xOKLBOS-sH1OUhhKtgRj1jKMZWHOuJZ2vvvl5-SocTaBcGCUBg/exec';
 
 const confirmGreeting = document.getElementById('confirmGreeting');
 const confirmText = document.getElementById('confirmText');
