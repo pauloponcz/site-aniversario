@@ -164,32 +164,6 @@ if (musicToggle && bgMusic) {
     bgMusic.addEventListener('timeupdate', salvarEstadoMusica);
 }
 
-// const pixButtons = document.querySelectorAll('.pix-mobile-button');
-
-// pixButtons.forEach((button) => {
-//     button.addEventListener('click', async () => {
-//         const pix = button.getAttribute('data-pix');
-
-//         if (!pix) {
-//             alert('Pix não configurado.');
-//             return;
-//         }
-
-//         try {
-//             await navigator.clipboard.writeText(pix);
-
-//             const textoOriginal = button.textContent;
-//             button.textContent = 'Pix copiado!';
-
-//             setTimeout(() => {
-//                 button.textContent = textoOriginal;
-//             }, 2000);
-//         } catch (error) {
-//             alert('Não foi possível copiar automaticamente. Copie manualmente: ' + pix);
-//         }
-//     });
-// });
-
 function criarNeve() {
     const camadaNeve = document.querySelector('.sparkle-layer');
 
@@ -293,8 +267,56 @@ function configurarLinksPresentes() {
     });
 }
 
+function configurarLinksFotos() {
+    const parametroConvite = obterParametroConviteDaUrl();
+    const linksFotos = document.querySelectorAll('.js-photo-link');
+
+    linksFotos.forEach((link) => {
+        let destino = './fotos.html';
+
+        if (parametroConvite) {
+            destino = `./fotos.html?${parametroConvite.tipo}=${encodeURIComponent(parametroConvite.valor)}`;
+        }
+
+        link.setAttribute('href', destino);
+
+        link.addEventListener('click', function (event) {
+            event.preventDefault();
+            window.location.href = destino;
+        });
+    });
+}
+
+function fotoLiberada() {
+    const parametros = new URLSearchParams(window.location.search);
+    const token = parametros.get('token');
+
+    if (token === 'admin1') {
+        return true;
+    }
+
+    const hoje = new Date();
+    const dataFesta = new Date('2026-08-15T00:00:00');
+
+    return hoje >= dataFesta;
+}
+
+function controlarSecaoFotos() {
+    const secaoFotos = document.getElementById('fotos');
+
+    if (!secaoFotos) {
+        return;
+    }
+
+    if (!fotoLiberada()) {
+        secaoFotos.style.display = 'none';
+    }
+}
+
 configurarLinksConfirmacao();
 configurarLinksPresentes();
+configurarLinksFotos();
+controlarSecaoFotos();
 
 criarNeve();
 

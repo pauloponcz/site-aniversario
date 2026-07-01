@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Enviar fotos | XV Sarah e Sofia</title>
+
+  <link rel="icon" type="image/svg+xml" href="./assets/icone/favicon-xv.svg">
+
+  <link rel="preload" as="image" href="./assets/fundo/fundo-desktop.png">
+  <link rel="preload" as="image" href="./assets/fundo/fundo-mobile.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+  <div class="page-bg"></div>
+  <div class="sparkle-layer"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="./assets/musica/musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-toggle" id="musicToggle" type="button">
+    🎵
+  </button>
+
+  <main>
+    <section class="section photos-page">
+      <div class="container">
+        <header class="section-title">
+          <p class="script-title">Fotos</p>
+          <h3>Compartilhe um momento especial</h3>
+        </header>
+
+        <div class="photo-upload-card">
+          <p>
+            Use o seu olhar para capturar momentos únicos e compartilhe as imagens registradas.
+            Cada foto ajuda Sarah e Sofia a guardar lembranças especiais dessa noite inesquecível.
+          </p>
+
+          <form id="photoUploadForm" class="photo-upload-form">
+            <label>
+              Seu nome
+              <input type="text" id="photoName" placeholder="Digite seu nome" required>
+            </label>
+
+            <label>
+            Escolha as fotos
+            <input type="file" id="photoFile" accept="image/*" multiple required>
+            </label>
+
+            <button class="btn" type="submit" id="photoSubmitButton">
+            Enviar fotos
+            </button>
+
+            <p class="photo-upload-message" id="photoUploadMessage"></p>
+          </form>
+
+          <a class="btn btn-outline btn--spaced" id="backToInviteFromPhotos" href="./index.html">
+            Voltar para o convite
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/fotos.js"></script>
+</body>
+</html>

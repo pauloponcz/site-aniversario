@@ -1,4 +1,4 @@
-const API_URL = 'https://script.google.com/macros/s/AKfycbyU-Gmw3-QIVEt85a61xOKLBOS-sH1OUhhKtgRj1jKMZWHOuJZ2vvvl5-SocTaBcGCUBg/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbwfj98DZizgj84789ck_CfinKYgB6JpJXC9m7z2mhFXE7wN6RTk8s6KhzgvlvTMCEDz1A/exec';
 
 const giftGallerySarah = document.getElementById('giftGallerySarah');
 const giftGallerySofia = document.getElementById('giftGallerySofia');

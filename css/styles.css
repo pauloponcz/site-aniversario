@@ -2105,6 +2105,145 @@ footer {
     display: block;
 }
 
+/* PÁGINA DE ENVIO DE FOTOS */
+.photos-page {
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.photo-upload-card {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    padding: 36px 30px;
+    border-radius: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.46);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.24) 0%,
+            rgba(255, 255, 255, 0.10) 38%,
+            rgba(255, 255, 255, 0.08) 100%
+        );
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow:
+        0 24px 70px rgba(21, 67, 98, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+    text-align: center;
+}
+
+.photo-upload-card > p {
+    color: rgba(255,255,255,0.95);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 8px rgba(22, 71, 106, 0.28);
+}
+
+.photo-upload-form {
+    display: grid;
+    gap: 18px;
+    width: min(460px, 100%);
+    margin: 0 auto;
+}
+
+.photo-upload-form label {
+    display: grid;
+    gap: 8px;
+    color: var(--branco);
+    font-weight: 800;
+    text-align: left;
+    text-shadow: 0 2px 8px rgba(22, 71, 106, 0.35);
+}
+
+.photo-upload-form input[type="text"],
+.photo-upload-form input[type="file"] {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.55);
+    outline: none;
+    color: var(--texto-azul);
+    background: rgba(255,255,255,0.88);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.photo-upload-message {
+    min-height: 24px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.photo-upload-message--success {
+    color: #ffffff;
+}
+
+.photo-upload-message--error {
+    color: #ffe1e1;
+}
+
+@media (max-width: 600px) {
+    .photos-page {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+    .photo-upload-card {
+        max-width: 300px;
+        padding: 30px 20px;
+    }
+}
+
+/* BOTÃO BONITO PARA ESCOLHER FOTO */
+.photo-upload-form input[type="file"] {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 14px;
+    min-height: 56px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    color: var(--texto-azul);
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.96), rgba(223,244,255,0.92));
+    box-shadow:
+        0 12px 30px rgba(27, 81, 119, 0.22),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 800;
+}
+
+.photo-upload-form input[type="file"]::file-selector-button {
+    min-height: 36px;
+    margin-right: 14px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    color: var(--texto-azul);
+    background: linear-gradient(135deg, #ffffff, #dff4ff, #b9d8ed);
+    box-shadow: 0 8px 20px rgba(27, 81, 119, 0.24);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.photo-upload-form input[type="file"]::file-selector-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(27, 81, 119, 0.34);
+}
+
+.photo-upload-form input[type="file"]:hover {
+    background:
+        linear-gradient(135deg, #ffffff, #eaf7ff, #c7e6f8);
+    box-shadow:
+        0 16px 36px rgba(27, 81, 119, 0.30),
+        inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
 /* Celular mostra chave Pix */
 @media (max-width: 768px) {
     .pix-person-card {
@@ -2146,5 +2285,316 @@ footer {
     .pix-key {
         font-size: 0.9rem;
         padding: 10px 14px;
+    }
+}
+
+/* =========================================================
+   AJUSTE FINAL - PÁGINA DE FOTOS NO CELULAR
+   Cole este bloco no final do styles.css
+   ========================================================= */
+
+/* Melhora a página de fotos sem quebrar as outras páginas */
+.photos-page {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.photos-page .container {
+    position: relative;
+    z-index: 2;
+}
+
+.photos-page .section-title {
+    width: min(720px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photos-page .section-title .script-title {
+    margin-bottom: 0;
+}
+
+.photos-page .section-title h3 {
+    line-height: 1.15;
+}
+
+.photo-upload-card {
+    overflow: hidden;
+}
+
+.photo-upload-card > p {
+    width: min(520px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+}
+
+.photo-upload-form .btn {
+    width: 100%;
+}
+
+.photo-upload-form input[type="text"]::placeholder {
+    color: rgba(22, 71, 106, 0.58);
+}
+
+.photo-upload-form input[type="file"] {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.photo-upload-form input[type="file"]::file-selector-button {
+    white-space: nowrap;
+}
+
+#backToInviteFromPhotos {
+    width: min(300px, 100%);
+}
+
+/* Tablet e celular grande */
+@media (max-width: 768px) {
+    .photos-page {
+        min-height: 100vh;
+        padding: 18px 18px 90px;
+    }
+
+    .photos-page .container {
+        width: 100%;
+        max-width: 390px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .photos-page .section-title {
+        margin-bottom: 18px;
+    }
+
+    .photos-page .section-title .script-title {
+        font-size: clamp(3.2rem, 16vw, 4.4rem);
+        line-height: 0.75;
+        margin-bottom: 8px;
+    }
+
+    .photos-page .section-title h3 {
+        max-width: 340px;
+        margin: 0 auto;
+        font-size: clamp(1.45rem, 7vw, 2.05rem);
+        line-height: 1.12;
+        letter-spacing: 1.6px;
+    }
+
+    .photo-upload-card {
+        width: 100%;
+        max-width: 340px;
+        padding: 28px 20px 30px;
+        border-radius: 30px;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, 0.30) 0%,
+                rgba(255, 255, 255, 0.15) 44%,
+                rgba(255, 255, 255, 0.10) 100%
+            );
+        box-shadow:
+            0 22px 60px rgba(21, 67, 98, 0.30),
+            inset 0 1px 0 rgba(255, 255, 255, 0.62),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .photo-upload-card > p {
+        max-width: 270px;
+        margin-bottom: 26px;
+        font-size: 0.98rem;
+        line-height: 1.7;
+        font-weight: 700;
+    }
+
+    .photo-upload-form {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .photo-upload-form label {
+        gap: 9px;
+        font-size: 0.98rem;
+        text-align: left;
+    }
+
+    .photo-upload-form input[type="text"] {
+        min-height: 54px;
+        padding: 0 18px;
+        border-radius: 18px;
+        font-size: 0.92rem;
+        box-shadow:
+            0 10px 24px rgba(21, 67, 98, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    }
+
+    .photo-upload-form input[type="file"] {
+        min-height: 58px;
+        padding: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.90);
+        box-shadow:
+            0 10px 24px rgba(21, 67, 98, 0.18),
+            inset 0 1px 0 rgba(255, 255, 255, 0.80);
+        color: transparent;
+        font-size: 0;
+    }
+
+    .photo-upload-form input[type="file"]::file-selector-button {
+        width: 100%;
+        min-height: 42px;
+        margin: 0;
+        padding: 0 18px;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        background: linear-gradient(135deg, #ffffff, #dff4ff, #b9d8ed);
+        box-shadow: 0 10px 24px rgba(27, 81, 119, 0.22);
+    }
+
+    .photo-upload-form input[type="file"]::-webkit-file-upload-button {
+        width: 100%;
+        min-height: 42px;
+        margin: 0;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 999px;
+        color: var(--texto-azul);
+        background: linear-gradient(135deg, #ffffff, #dff4ff, #b9d8ed);
+        box-shadow: 0 10px 24px rgba(27, 81, 119, 0.22);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.92rem;
+        font-weight: 900;
+    }
+
+    .photo-upload-form .btn,
+    #photoSubmitButton {
+        min-height: 54px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        box-shadow: 0 14px 30px rgba(27, 81, 119, 0.26);
+    }
+
+    .photo-upload-message {
+        min-height: 22px;
+        font-size: 0.82rem;
+        line-height: 1.45;
+    }
+
+    #backToInviteFromPhotos {
+        width: 100%;
+        max-width: 245px;
+        min-height: 52px;
+        margin-top: 34px;
+        font-size: 0.92rem;
+    }
+}
+
+/* Celular menor */
+@media (max-width: 480px) {
+    body {
+        background-position: center top;
+    }
+
+    .photos-page {
+        padding: 10px 14px 88px;
+    }
+
+    .photos-page .container {
+        max-width: 360px;
+    }
+
+    .photos-page .section-title {
+        margin-bottom: 14px;
+    }
+
+    .photos-page .section-title .script-title {
+        font-size: clamp(3rem, 17vw, 4rem);
+        margin-bottom: 6px;
+    }
+
+    .photos-page .section-title h3 {
+        max-width: 310px;
+        font-size: clamp(1.35rem, 7.7vw, 1.9rem);
+        letter-spacing: 1.2px;
+    }
+
+    .photo-upload-card {
+        max-width: 300px;
+        padding: 24px 18px 28px;
+        border-radius: 28px;
+    }
+
+    .photo-upload-card > p {
+        max-width: 244px;
+        margin-bottom: 24px;
+        font-size: 0.93rem;
+        line-height: 1.72;
+    }
+
+    .photo-upload-form {
+        gap: 15px;
+    }
+
+    .photo-upload-form label {
+        font-size: 0.95rem;
+    }
+
+    .photo-upload-form input[type="text"] {
+        min-height: 52px;
+        padding: 0 16px;
+        font-size: 0.88rem;
+    }
+
+    .photo-upload-form input[type="file"] {
+        min-height: 56px;
+        padding: 7px;
+    }
+
+    .photo-upload-form input[type="file"]::file-selector-button,
+    .photo-upload-form input[type="file"]::-webkit-file-upload-button {
+        min-height: 42px;
+        font-size: 0.86rem;
+        padding: 0 12px;
+    }
+
+    #photoSubmitButton {
+        min-height: 52px;
+        font-size: 0.88rem;
+    }
+
+    #backToInviteFromPhotos {
+        max-width: 230px;
+        min-height: 50px;
+        margin-top: 32px;
+        font-size: 0.88rem;
+    }
+
+    .music-toggle {
+        width: 44px;
+        height: 44px;
+        left: 12px;
+        bottom: 12px;
+    }
+}
+
+/* Celular muito estreito */
+@media (max-width: 360px) {
+    .photos-page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .photo-upload-card {
+        max-width: 286px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .photos-page .section-title h3 {
+        font-size: 1.28rem;
     }
 }
