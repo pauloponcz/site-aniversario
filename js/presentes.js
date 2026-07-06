@@ -5,7 +5,77 @@ const giftGallerySofia = document.getElementById('giftGallerySofia');
 const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
 
+const giftConfirmModal = document.getElementById('giftConfirmModal');
+const giftConfirmName = document.getElementById('giftConfirmName');
+const giftConfirmClose = document.getElementById('giftConfirmClose');
+const giftConfirmCancel = document.getElementById('giftConfirmCancel');
+const giftConfirmAccept = document.getElementById('giftConfirmAccept');
+
+let presentePendente = null;
+
 let musicaTocando = false;
+
+function abrirModalConfirmacaoPresente(presente, botao, tag, card) {
+    presentePendente = {
+        presente: presente,
+        botao: botao,
+        tag: tag,
+        card: card
+    };
+
+    if (giftConfirmName) {
+        giftConfirmName.textContent = presente.nomePresente || 'Presente escolhido';
+    }
+
+    if (giftConfirmModal) {
+        giftConfirmModal.classList.add('active');
+    }
+}
+
+function fecharModalConfirmacaoPresente() {
+    if (giftConfirmModal) {
+        giftConfirmModal.classList.remove('active');
+    }
+
+    presentePendente = null;
+}
+
+function configurarModalConfirmacaoPresente() {
+    if (giftConfirmClose) {
+        giftConfirmClose.addEventListener('click', fecharModalConfirmacaoPresente);
+    }
+
+    if (giftConfirmCancel) {
+        giftConfirmCancel.addEventListener('click', fecharModalConfirmacaoPresente);
+    }
+
+    if (giftConfirmModal) {
+        giftConfirmModal.addEventListener('click', function (event) {
+            if (event.target === giftConfirmModal) {
+                fecharModalConfirmacaoPresente();
+            }
+        });
+    }
+
+    if (giftConfirmAccept) {
+        giftConfirmAccept.addEventListener('click', function () {
+            if (!presentePendente) {
+                return;
+            }
+
+            const dados = presentePendente;
+
+            fecharModalConfirmacaoPresente();
+
+            escolherPresente(
+                dados.presente,
+                dados.botao,
+                dados.tag,
+                dados.card
+            );
+        });
+    }
+}
 
 function salvarEstadoMusica() {
     if (!bgMusic) {
@@ -253,7 +323,7 @@ function montarGaleriaPresentes(presentes, galeria) {
             botao.disabled = indisponivel;
 
             botao.addEventListener('click', () => {
-                escolherPresente(presente, botao, tag, card);
+                abrirModalConfirmacaoPresente(presente, botao, tag, card);
             });
         }
 
@@ -406,6 +476,8 @@ configurarAbasPresentes();
 configurarLinkVoltarConvite();
 configurarLinksPresentesNoIndex();
 configurarPix();
+configurarModalConfirmacaoPresente();
+
 if (sessionStorage.getItem('musicaAtiva') === 'sim') {
     tocarMusica();
 }
