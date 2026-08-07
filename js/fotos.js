@@ -264,7 +264,7 @@ function fotoLiberada() {
     }
 
     const hoje = new Date();
-    const dataFesta = new Date('2026-08-15T00:00:00');
+    const dataFesta = new Date('2026-07-15T00:00:00');
 
     return hoje >= dataFesta;
 }
